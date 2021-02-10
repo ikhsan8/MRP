@@ -17,7 +17,7 @@ class CreatePlaceTable extends Migration
             $table->bigIncrements('id');
             $table->string('place_code');
             $table->string('place_name');
-            $table->text('descrition')->nullable();
+            $table->text('description')->nullable();
             $table->text('remarks')->nullable();
             $table->text('other')->nullable();
         });

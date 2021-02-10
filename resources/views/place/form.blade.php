@@ -1,22 +1,22 @@
 @extends('layouts.v_template')
 @section('content')
-<div class="card card-primary col-6 ml-4">
+<div class="card card-primary col-8 ml-4">
     <div class="card-header">
-      <h3 class="card-title">Add Unit</h3>
+      <h3 class="card-title">Add place</h3>
     </div>
     <!-- /.card-header -->
     <!-- form start -->
-    <form role="form" method="post" action="{{ route('unit.store') }}" enctype="multipart/form-data">
+    <form role="form" method="post" action="{{ route('place.store') }}" enctype="multipart/form-data">
         @csrf
       <div class="card-body">
         <div class="form-group">
-          <label for="unit_code">Unit Code</label>
-          <input type="input" class="form-control" id="unit_code" name="unit_code" placeholder="Enter unit code">
+          <label foplace_code">Place Code</label>
+          <input type="input" class="form-control" id="place_code" name="place_code" placeholder="Enter Place Code">
         </div>
         <div class="card-body">
         <div class="form-group">
-          <label for="unit_name">Unit Name</label>
-          <input type="input" class="form-control" id="unit_name" name="unit_name" placeholder="Enter unit name">
+          <label for="place_name">Place Name</label>
+          <input type="input" class="form-control" id="place_name" name="place_name" placeholder="Enter Place Name">
         </div>
         
         <div class="form-group">
@@ -26,23 +26,25 @@
         <div class="card-body">
         <div class="form-group">
           <label for="remarks">Remarks</label>
-          <input type="input" class="form-control" id="remarks" name="remarks" placeholder="Enter remarks">
+          <input type="input" class="form-control" id="name" name="name" placeholder="Enter Name">
         </div>
         <div class="card-body">
         <div class="form-group">
           <label for="other">Other</label>
-          <input type="input" class="form-control" id="other" name="other" placeholder="Enter other">
-        </div>
+          <input type="input" class="form-control" id="name" name="name" placeholder="Enter Name">
+        </div>        
+               
       <!-- /.card-body -->
 
       <div class="card-footer">
         <button type="submit" class="btn btn-primary">Submit</button>
-        <a href="{{ url('unit') }}"><button type="button" class="btn btn-danger">Cancel</button></a>
+        <a href="{{ url('place') }}"><button type="button" class="btn btn-danger">Cancel</button></a>
       </div>
     </form>
-  </div>
-  </div> 
-     </div> 
+    </div>
+  </div>        
+    </div> 
+      </div> 
         </div> 
   <!-- /.card -->
   @endsection

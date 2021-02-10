@@ -5,7 +5,7 @@
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-      <span class="brand-text font-weight-light" style="font-size:30px;">Assets Management</span>
+      <span class="brand-text font-weight-light" style="font-size:30px;">MRP</span>
     </ul>
 
    

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 use File;
-use App\Category;
+use App\Problem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-class categoryController extends Controller
+class problemController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class categoryController extends Controller
      */
     public function index()
     {
-        $category ['category'] = Category::all();
-    	return view('category.home', $category);
+        $problem ['problem'] = Problem::all();
+    	return view('problem.home', $problem);
     }
 
     /**
@@ -25,7 +25,7 @@ class categoryController extends Controller
      */
     public function create()
     {
-        return view('category.form');
+        return view('problem.form');
     }
 
     /**
@@ -37,22 +37,24 @@ class categoryController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'category_code' => ['required'],
-    		'category_name' => ['required'],
+            'problem_code' => ['required'],
+    		'problem_name' => ['required'],
     	]);
  
-        $category = new Category();
-        $category->category_code = $request->input('category_code'); 
-        $category->category_name = $request->input('category_name');
-        $category->description = $request->input('description');
-        $category->remarks = $request->input('remarks');
-        $category->other = $request->input('other');
+        $problem = new Problem();
+        $problem->problem_code = $request->input('problem_code'); 
+        $problem->problem_name = $request->input('problem_name');
+        $problem->description = $request->input('description');
+        $problem->remarks = $request->input('remarks');
+        $problem->other = $request->input('other');
+
+
         
         
-        $category->save();
+        $problem->save();
        
         
-        return redirect('category')->with(['create' => 'Data saved successfully!']);
+        return redirect('problem')->with(['create' => 'Data saved successfully!']);
     }
 
     /**
@@ -74,10 +76,10 @@ class categoryController extends Controller
      */
     public function edit($id)
     {
-        $data['page_title'] = 'Edit category';
-        $data['categorys'] = Category::findOrFail($id);
+        $data['page_title'] = 'Edit problem';
+        $data['problems'] = Problem::findOrFail($id);
         // dd($departement);
-        return view('category.edit', $data);
+        return view('problem.edit', $data);
     }   
 
     /**
@@ -91,18 +93,18 @@ class categoryController extends Controller
     {
         //
         $request->validate([
-            'category_name' => ['required', "unique:category,category_name, $id"],
+            'problem_name' => ['required', "unique:problem,problem_name, $id"],
             
         ]);
           
-        $category = Category::findOrFail($id);
-        $category->category_name = $request->input('category_name');
-        $category->description = $request->input('description') ?? "N/A";
-        $category->remarks = $request->input('remarks') ?? "N/A";
-        $category->other = $request->input('other') ?? "N/A";
-        $category->save();
+        $problem = Problem::findOrFail($id);
+        $problem->problem_name = $request->input('problem_name');
+        $problem->description = $request->input('description') ?? "N/A";
+        $problem->remarks = $request->input('remarks') ?? "N/A";
+        $problem->other = $request->input('other') ?? "N/A";
+        $problem->save();
 
-        return redirect('category')->with(['update' => 'Data updated successfully!']);
+        return redirect('problem')->with(['update' => 'Data updated successfully!']);
 
     }
     /**
@@ -113,9 +115,9 @@ class categoryController extends Controller
      */
     public function destroy($id)
     {
-        $yadi = Category::findOrFail($id);
+        $yadi = Problem::findOrFail($id);
         $yadi->delete();
         
-    return redirect('category')->with(['delete' => 'Data delete successfully!']);
+    return redirect('problem')->with(['delete' => 'Data delete successfully!']);
     }
 }

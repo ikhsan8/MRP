@@ -22,8 +22,8 @@
                     <div class="card">
                         <div class="br-section-wrapper" style="padding: 30px 20px">
                             <div>
-                            <h1><i class="fab fa-trello"></i>
-                            <span class="brand-text font-weight-light" style="font-size:30px;"> <b> Unit </b></span>
+                            <h1><i class="fab fa-trello"></i>  
+                            <span class="brand-text font-weight-light" style="font-size:30px;"> <b> Countermeasure </b></span>
                                     </h1> 
                                 </a>
                             </div>
@@ -33,7 +33,7 @@
 
                <!-- /.card-header -->
                <div class="card-body">
-               <a href="{{route('unit.form')}}">
+               <a href="{{route('countermeasure.form')}}">
               <button class="btn btn-sm btn-info float-right">
                  <i class="icon ion ion-ios-plus-outline"></i>
                    New Data
@@ -46,8 +46,8 @@
                   <thead>
                   <tr>
                     <th>No</th>
-                    <th>Code Unit</th>
-                    <th>Name</th>
+                    <th>Countermeasure Code </th>
+                    <th>Countermeasure Name</th>
                     <th>Description</th>
                     <th>remarks</th>
                     <th>other</th>
@@ -59,29 +59,27 @@
                     @php
                          $no = 1;
                          @endphp
-                      @foreach ($unit as $data_unit)
+                      @foreach ($countermeasure as $data_countermeasure)
                       
                       <tr>
                       
                     <td>{{ $no++ }}</td>  
-                    <td>{{ $data_unit->unit_code }}</td> 
-                    <td>{{ $data_unit->unit_name }}</td>  
-                    <td>{{ $data_unit->description }}</td>  
-                    <td>{{ $data_unit->remarks }}</td>  
-                    <td>{{ $data_unit->other }}</td>  
-
-                      
+                    <td>{{ $data_countermeasure->countermeasure_code }}</td> 
+                    <td>{{ $data_countermeasure->countermeasure_name }}</td>  
+                    <td>{{ $data_countermeasure->description }}</td>  
+                    <td>{{ $data_countermeasure->remarks }}</td>  
+                    <td>{{ $data_countermeasure->other }}</td>  
                     <td>
-                      <a href="{{url('unit/'.$data_unit->id.'/edit/') }}">
+                      <a href="{{url('countermeasure/'.$data_countermeasure->id.'/edit/') }}">
                         <button class="btn btn-warning btn-sm text-white">
                             <i class="icon icon ion ion-edit"></i> Edit
 
                         </button>
                        </a>
-                       <form style="display:inline !important; " action="{{ route('unit.destroy', $data_unit->id) }}" method="POST">
+                       <form style="display:inline !important; " action="{{ route('countermeasure.destroy', $data_countermeasure->id) }}" method="POST">
                         @method('delete')
                         @csrf
-                        <button type="submit" class="btn btn-danger btn-sm  btn-100" onclick="return confirm('Apakah anda yakin ingin menghapus {{ $data_unit->name }}?')">
+                        <button type="submit" class="btn btn-danger btn-sm  btn-100" onclick="return confirm('Apakah anda yakin ingin menghapus {{ $data_countermeasure->name }}?')">
                             <i class="far fa-trash-alt"></i> Delete
                         </button>
                        </form>

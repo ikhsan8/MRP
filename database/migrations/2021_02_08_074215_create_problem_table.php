@@ -17,7 +17,7 @@ class CreateProblemTable extends Migration
             $table->bigIncrements('id');
             $table->string('problem_code');
             $table->string('problem_name');
-            $table->text('descrition')->nullable();
+            $table->text('description')->nullable();
             $table->text('remarks')->nullable();
             $table->text('other')->nullable();
         });

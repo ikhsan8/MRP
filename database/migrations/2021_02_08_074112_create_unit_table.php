@@ -17,7 +17,7 @@ class CreateUnitTable extends Migration
             $table->bigIncrements('id');
             $table->string('unit_code');
             $table->string('unit_name');
-            $table->text('descrition')->nullable();
+            $table->text('description')->nullable();
             $table->text('remarks')->nullable();
             $table->text('other')->nullable();
 

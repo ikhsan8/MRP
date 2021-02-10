@@ -31,29 +31,37 @@ Route::get('/all_assets/gettree', 'all_assetsController@getTree')->name('all_ass
  Route::put('/category/{id}', 'categoryController@update')->name('category.update');
  Route::delete('/category/{id}', 'categoryController@destroy')->name('category.destroy');
  
- // Location
-  Route::get('/location', 'locationController@index')->name('location.home'); 
-  Route::get('/location/add', 'locationController@create')->name('location.form');
-  Route::get('/location/{id}/edit', 'locationController@edit');
-  Route::post('/location/store', 'locationController@store')->name('location.store');
-  Route::put('/location/{id}', 'locationController@update')->name('location.update');
-  Route::delete('/location/{id}', 'locationController@destroy')->name('location.destroy');
+ // Place
+  Route::get('/place', 'placeController@index')->name('place.home'); 
+  Route::get('/place/add', 'placeController@create')->name('place.form');
+  Route::get('/place/{id}/edit', 'placeController@edit');
+  Route::post('/place/store', 'placeController@store')->name('place.store');
+  Route::put('/place/{id}', 'placeController@update')->name('place.update');
+  Route::delete('/place/{id}', 'placeController@destroy')->name('place.destroy');
 
-// Type
+// Unit
  Route::get('/unit', 'unitController@index')->name('unit.home');
  Route::get('/unit/add', 'unitController@create')->name('unit.form');
  Route::get('/unit/{id}/edit', 'unitController@edit');
- Route::post('/type/store', 'typeController@store')->name('type.store');
- Route::put('/type/{id}', 'typeController@update')->name('type.update');
- Route::delete('/type/{id}', 'typeController@destroy')->name('type.destroy');
- 
- 
+ Route::post('/unit/store', 'unitController@store')->name('unit.store');
+ Route::put('/unit/{id}', 'unitController@update')->name('unit.update');
+ Route::delete('/unit/{id}', 'unitController@destroy')->name('unit.destroy');
 
+// Problem
+Route::get('/problem', 'problemController@index')->name('problem.home'); 
+Route::get('/problem/add', 'problemController@create')->name('problem.form');
+Route::get('/problem/{id}/edit', 'problemController@edit');
+Route::post('/problem/store', 'problemController@store')->name('problem.store');
+Route::put('/problem/{id}', 'problemController@update')->name('problem.update');
+Route::delete('/problem/{id}', 'problemController@destroy')->name('problem.destroy');
 
-
-
-
-
+// countermeasure
+Route::get('/countermeasure', 'countermeasureController@index')->name('countermeasure.home'); 
+Route::get('/countermeasure/add', 'countermeasureController@create')->name('countermeasure.form');
+Route::get('/countermeasure/{id}/edit', 'countermeasureController@edit');
+Route::post('/countermeasure/store', 'countermeasureController@store')->name('countermeasure.store');
+Route::put('/countermeasure/{id}', 'countermeasureController@update')->name('countermeasure.update');
+Route::delete('/countermeasure/{id}', 'countermeasureController@destroy')->name('countermeasure.destroy');
 
 
 

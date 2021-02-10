@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 use File;
-use App\Category;
+use App\Place;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-class categoryController extends Controller
+class placeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class categoryController extends Controller
      */
     public function index()
     {
-        $category ['category'] = Category::all();
-    	return view('category.home', $category);
+        $place ['place'] = Place::all();
+    	return view('place.home', $place);
     }
 
     /**
@@ -25,7 +25,7 @@ class categoryController extends Controller
      */
     public function create()
     {
-        return view('category.form');
+        return view('place.form');
     }
 
     /**
@@ -37,22 +37,22 @@ class categoryController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'category_code' => ['required'],
-    		'category_name' => ['required'],
+            'place_code' => ['required'],
+    		'place_name' => ['required'],
     	]);
  
-        $category = new Category();
-        $category->category_code = $request->input('category_code'); 
-        $category->category_name = $request->input('category_name');
-        $category->description = $request->input('description');
-        $category->remarks = $request->input('remarks');
-        $category->other = $request->input('other');
+        $place = new Place();
+        $place->place_code = $request->input('place_code'); 
+        $place->place_name = $request->input('place_name');
+        $place->description = $request->input('description');
+        $place->remarks = $request->input('remarks');
+        $place->other = $request->input('other');
         
         
-        $category->save();
+        $place->save();
        
         
-        return redirect('category')->with(['create' => 'Data saved successfully!']);
+        return redirect('place')->with(['create' => 'Data saved successfully!']);
     }
 
     /**
@@ -74,10 +74,10 @@ class categoryController extends Controller
      */
     public function edit($id)
     {
-        $data['page_title'] = 'Edit category';
-        $data['categorys'] = Category::findOrFail($id);
+        $data['page_title'] = 'Edit place';
+        $data['places'] = Place::findOrFail($id);
         // dd($departement);
-        return view('category.edit', $data);
+        return view('place.edit', $data);
     }   
 
     /**
@@ -91,18 +91,18 @@ class categoryController extends Controller
     {
         //
         $request->validate([
-            'category_name' => ['required', "unique:category,category_name, $id"],
+            'place_name' => ['required', "unique:place,place_name, $id"],
             
         ]);
           
-        $category = Category::findOrFail($id);
-        $category->category_name = $request->input('category_name');
-        $category->description = $request->input('description') ?? "N/A";
-        $category->remarks = $request->input('remarks') ?? "N/A";
-        $category->other = $request->input('other') ?? "N/A";
-        $category->save();
+        $place = Place::findOrFail($id);
+        $place->place_name = $request->input('place_name');
+        $place->description = $request->input('description') ?? "N/A";
+        $place->remarks = $request->input('remarks') ?? "N/A";
+        $place->other = $request->input('other') ?? "N/A";
+        $place->save();
 
-        return redirect('category')->with(['update' => 'Data updated successfully!']);
+        return redirect('place')->with(['update' => 'Data updated successfully!']);
 
     }
     /**
@@ -113,9 +113,9 @@ class categoryController extends Controller
      */
     public function destroy($id)
     {
-        $yadi = Category::findOrFail($id);
+        $yadi = Place::findOrFail($id);
         $yadi->delete();
         
-    return redirect('category')->with(['delete' => 'Data delete successfully!']);
+    return redirect('place')->with(['delete' => 'Data delete successfully!']);
     }
 }

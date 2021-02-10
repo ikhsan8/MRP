@@ -30,33 +30,45 @@
             <a href="#" class="nav-link">
             <i class="nav-icon fas fa-dolly"></i>
               <p>
-                Assets
+                General
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ url('all_assets') }}" class="nav-link">
-                  <i class="fas fa-globe nav-icon"></i>
-                  <p>All Assets</p>
-                </a>
-              </li>
-              <li class="nav-item">
                 <a href="{{ url('unit') }}" class="nav-link">
-                  <i class="fab fa-trello nav-icon"></i>
+                <i class="fas fa-thumbtack nav-icon"></i>
                   <p>Unit</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('location') }}" class="nav-link">
+                <a href="{{ url('place') }}" class="nav-link">
                  <i class="fas fa-thumbtack nav-icon"></i>
-                  <p>Location</p>
+                  <p>Place</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{ url('category') }}" class="nav-link">
-                  <i class="fas fa-swatchbook nav-icon"></i>
+                <i class="fas fa-thumbtack nav-icon"></i>
                   <p>Category</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('conversion') }}" class="nav-link">
+                 <i class="fas fa-thumbtack nav-icon"></i>
+                  <p>Conversion</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('problem') }}" class="nav-link">
+                 <i class="fas fa-thumbtack nav-icon"></i>
+                  <p>Problem</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('countermeasure') }}" class="nav-link">
+                 <i class="fas fa-thumbtack nav-icon"></i>
+                  <p>Countermeasure</p>
                 </a>
               </li>
             </ul>

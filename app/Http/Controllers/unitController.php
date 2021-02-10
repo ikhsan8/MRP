@@ -41,12 +41,12 @@ class unitController extends Controller
     		'unit_name' => ['required'],
     	]);
  
-        $unit = new Type();
-        $unit->name = $request->input('unit_code'); 
-        $unit->description = $request->input('unit_name');
+        $unit = new Unit();
+        $unit->unit_code = $request->input('unit_code'); 
+        $unit->unit_name = $request->input('unit_name');
         $unit->description = $request->input('description');
-        $unit->description = $request->input('remarks');
-        $unit->description = $request->input('other');
+        $unit->remarks = $request->input('remarks');
+        $unit->other = $request->input('other');
 
 
         
@@ -77,7 +77,7 @@ class unitController extends Controller
     public function edit($id)
     {
         $data['page_title'] = 'Edit unit';
-        $data['units'] = Type::findOrFail($id);
+        $data['units'] = Unit::findOrFail($id);
         // dd($departement);
         return view('unit.edit', $data);
     }   
@@ -93,12 +93,11 @@ class unitController extends Controller
     {
         //
         $request->validate([
-            'name' => ['required', "unique:unit,name, $id"],
+            'unit_name' => ['required', "unique:unit,unit_name, $id"],
             
         ]);
           
-        $unit = Type::findOrFail($id);
-        $unit->unit_code = $request->input('unit_code');
+        $unit = Unit::findOrFail($id);
         $unit->unit_name = $request->input('unit_name');
         $unit->description = $request->input('description') ?? "N/A";
         $unit->remarks = $request->input('remarks') ?? "N/A";
