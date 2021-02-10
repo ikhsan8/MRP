@@ -47,12 +47,11 @@ Route::get('/all_assets/gettree', 'all_assetsController@getTree')->name('all_ass
  Route::put('/type/{id}', 'typeController@update')->name('type.update');
  Route::delete('/type/{id}', 'typeController@destroy')->name('type.destroy');
  
+ Route::resource('/grade', 'gradeController'); 
+ Route::resource('/section', 'sectionController'); 
+ Route::resource('/title', 'titleController'); 
+ Route::resource('/departement', 'departementController'); 
  
-
-
-
-
-
 
 
 

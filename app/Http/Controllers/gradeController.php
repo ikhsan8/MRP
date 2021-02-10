@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Category;
+use App\Grade;
 use Illuminate\Http\Request;
 
-class categoryController extends Controller
+class gradeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +13,8 @@ class categoryController extends Controller
      */
     public function index()
     {
-        $category ['category'] = Category::all();
-    	return view('category.home', $category);
+        $grade ['grade'] = Grade::all();
+    	return view('grade.home', $grade);
     }
 
     /**
@@ -24,8 +24,7 @@ class categoryController extends Controller
      */
     public function create()
     {
-        return view('category.form');
-        
+        return view('grade.form');
     }
 
     /**
@@ -37,16 +36,22 @@ class categoryController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-    		'name' => ['required'],
-            'description' => ['required'],
+    		'grade_code' => ['required'],
+            'grade_name' => ['required'],
+            'description' => ['nullable'],
+            'remarks' => ['nullable'],
+            'others' => ['nullable'],
             
         ]);
-        $category = new Category();
-        $category->name = $request->input('name'); 
-        $category->description = $request->input('description');
-        $category->save();
+        $grade = new Grade();
+        $grade->grade_code = $request->input('grade_code'); 
+        $grade->grade_name = $request->input('grade_name');
+        $grade->description = $request->input('description');
+        $grade->remarks = $request->input('remarks');
+        $grade->others = $request->input('others');
+        $grade->save();
         
-        return redirect('category')->with(['create' => 'Data saved successfully!']);
+        return redirect('grade')->with(['create' => 'Data saved successfully!']);
     }
 
     /**
@@ -88,7 +93,6 @@ class categoryController extends Controller
         ]);
           
         $grade = Grade::findOrFail($id);
-        $grade->grade_code = $request->input('grade_code');
         $grade->grade_name = $request->input('grade_name');
         $grade->description = $request->input('description') ?? "N/A";
         $grade->remarks = $request->input('remarks') ?? "N/A";
@@ -107,9 +111,9 @@ class categoryController extends Controller
      */
     public function destroy($id)
     {
-        $yadi = Category::findOrFail($id);
+        $yadi = Grade::findOrFail($id);
         $yadi->delete();
         
-    return redirect('category')->with(['delete' => 'Data delete successfully!']);
+    return redirect('grade')->with(['delete' => 'Data delete successfully!']);
     }
 }

@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Category;
+use App\Section;
 use Illuminate\Http\Request;
 
-class categoryController extends Controller
+class sectionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +13,8 @@ class categoryController extends Controller
      */
     public function index()
     {
-        $category ['category'] = Category::all();
-    	return view('category.home', $category);
+        $section ['section'] = Section::all();
+    	return view('section.home', $section);
     }
 
     /**
@@ -24,8 +24,7 @@ class categoryController extends Controller
      */
     public function create()
     {
-        return view('category.form');
-        
+        return view('section.form');
     }
 
     /**
@@ -37,16 +36,22 @@ class categoryController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-    		'name' => ['required'],
-            'description' => ['required'],
+    		'section_code' => ['required'],
+            'section_name' => ['required'],
+            'description' => ['nullable'],
+            'remarks' => ['nullable'],
+            'others' => ['nullable'],
             
         ]);
-        $category = new Category();
-        $category->name = $request->input('name'); 
-        $category->description = $request->input('description');
-        $category->save();
+        $section = new Section();
+        $section->section_code = $request->input('section_code'); 
+        $section->section_name = $request->input('section_name');
+        $section->description = $request->input('description');
+        $section->remarks = $request->input('remarks');
+        $section->others = $request->input('others');
+        $section->save();
         
-        return redirect('category')->with(['create' => 'Data saved successfully!']);
+        return redirect('section')->with(['create' => 'Data saved successfully!']);
     }
 
     /**
@@ -68,9 +73,9 @@ class categoryController extends Controller
      */
     public function edit($id)
     {
-        $data['grades'] = Grade::findOrFail($id);
+        $data['sections'] = Section::findOrFail($id);
         // dd($departement);
-        return view('grade.edit', $data);
+        return view('section.edit', $data);
     }
 
     /**
@@ -83,20 +88,19 @@ class categoryController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'grade_name' => ['required', "unique:grade,grade_name, $id"],
+            'section_name' => ['required', "unique:section,section_name, $id"],
             
         ]);
           
-        $grade = Grade::findOrFail($id);
-        $grade->grade_code = $request->input('grade_code');
-        $grade->grade_name = $request->input('grade_name');
-        $grade->description = $request->input('description') ?? "N/A";
-        $grade->remarks = $request->input('remarks') ?? "N/A";
-        $grade->others = $request->input('others') ?? "N/A";
+        $section = Section::findOrFail($id);
+        $section->section_name = $request->input('section_name');
+        $section->description = $request->input('description') ?? "N/A";
+        $section->remarks = $request->input('remarks') ?? "N/A";
+        $section->others = $request->input('others') ?? "N/A";
 
-        $grade->save();
+        $section->save();
 
-        return redirect('grade')->with(['update' => 'Data updated successfully!']);
+        return redirect('section')->with(['update' => 'Data updated successfully!']);
     }
 
     /**
@@ -107,9 +111,9 @@ class categoryController extends Controller
      */
     public function destroy($id)
     {
-        $yadi = Category::findOrFail($id);
+        $yadi = Section::findOrFail($id);
         $yadi->delete();
         
-    return redirect('category')->with(['delete' => 'Data delete successfully!']);
+    return redirect('section')->with(['delete' => 'Data delete successfully!']);
     }
 }

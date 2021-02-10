@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Category;
+use App\Title;
 use Illuminate\Http\Request;
 
-class categoryController extends Controller
+class titleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +13,8 @@ class categoryController extends Controller
      */
     public function index()
     {
-        $category ['category'] = Category::all();
-    	return view('category.home', $category);
+        $title ['title'] = Title::all();
+    	return view('title.home', $title);
     }
 
     /**
@@ -24,8 +24,7 @@ class categoryController extends Controller
      */
     public function create()
     {
-        return view('category.form');
-        
+        return view('title.form');
     }
 
     /**
@@ -37,16 +36,22 @@ class categoryController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-    		'name' => ['required'],
-            'description' => ['required'],
+    		'title_code' => ['required'],
+            'title_name' => ['required'],
+            'description' => ['nullable'],
+            'remarks' => ['nullable'],
+            'others' => ['nullable'],
             
         ]);
-        $category = new Category();
-        $category->name = $request->input('name'); 
-        $category->description = $request->input('description');
-        $category->save();
+        $title = new Title();
+        $title->title_code = $request->input('title_code'); 
+        $title->title_name = $request->input('title_name');
+        $title->description = $request->input('description');
+        $title->remarks = $request->input('remarks');
+        $title->others = $request->input('others');
+        $title->save();
         
-        return redirect('category')->with(['create' => 'Data saved successfully!']);
+        return redirect('title')->with(['create' => 'Data saved successfully!']);
     }
 
     /**
@@ -68,9 +73,9 @@ class categoryController extends Controller
      */
     public function edit($id)
     {
-        $data['grades'] = Grade::findOrFail($id);
+        $data['titles'] = Title::findOrFail($id);
         // dd($departement);
-        return view('grade.edit', $data);
+        return view('title.edit', $data);
     }
 
     /**
@@ -83,20 +88,19 @@ class categoryController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'grade_name' => ['required', "unique:grade,grade_name, $id"],
+            'title_name' => ['required', "unique:title,title_name, $id"],
             
         ]);
           
-        $grade = Grade::findOrFail($id);
-        $grade->grade_code = $request->input('grade_code');
-        $grade->grade_name = $request->input('grade_name');
-        $grade->description = $request->input('description') ?? "N/A";
-        $grade->remarks = $request->input('remarks') ?? "N/A";
-        $grade->others = $request->input('others') ?? "N/A";
+        $title = Title::findOrFail($id);
+        $title->title_name = $request->input('title_name');
+        $title->description = $request->input('description') ?? "N/A";
+        $title->remarks = $request->input('remarks') ?? "N/A";
+        $title->others = $request->input('others') ?? "N/A";
 
-        $grade->save();
+        $title->save();
 
-        return redirect('grade')->with(['update' => 'Data updated successfully!']);
+        return redirect('title')->with(['update' => 'Data updated successfully!']);
     }
 
     /**
@@ -107,9 +111,9 @@ class categoryController extends Controller
      */
     public function destroy($id)
     {
-        $yadi = Category::findOrFail($id);
+        $yadi = Title::findOrFail($id);
         $yadi->delete();
         
-    return redirect('category')->with(['delete' => 'Data delete successfully!']);
+    return redirect('title')->with(['delete' => 'Data delete successfully!']);
     }
 }
