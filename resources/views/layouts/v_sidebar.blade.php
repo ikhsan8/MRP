@@ -83,21 +83,33 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-folder-open"></i>
               <p>
-                Master Data
+                Employee
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ url('location') }}" class="nav-link">
+                <a href="{{ url('grade') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>BOM</p>
+                  <p>Grade</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('category') }}" class="nav-link">
+                <a href="{{ url('departement') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Material</p>
+                  <p>Departement</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('section') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Section</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('title') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Title</p>
                 </a>
               </li>
             </ul>

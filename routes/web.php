@@ -62,6 +62,13 @@ Route::get('/countermeasure/{id}/edit', 'countermeasureController@edit');
 Route::post('/countermeasure/store', 'countermeasureController@store')->name('countermeasure.store');
 Route::put('/countermeasure/{id}', 'countermeasureController@update')->name('countermeasure.update');
 Route::delete('/countermeasure/{id}', 'countermeasureController@destroy')->name('countermeasure.destroy');
+ 
+ Route::resource('/grade', 'gradeController'); 
+ Route::resource('/section', 'sectionController'); 
+ Route::resource('/title', 'titleController'); 
+ Route::resource('/departement', 'departementController'); 
+ 
+
 
 
 
