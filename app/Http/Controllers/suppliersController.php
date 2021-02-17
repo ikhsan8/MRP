@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Suppliers;
 use Illuminate\Http\Request;
 
 class suppliersController extends Controller
@@ -76,7 +76,7 @@ class suppliersController extends Controller
      */
     public function edit($id)
     {
-        $data['supplierss'] = Suppliers::findOrFail($id);
+        $data['suppliers'] = Suppliers::findOrFail($id);
         // dd($departement);
         return view('suppliers.edit', $data);
     }
