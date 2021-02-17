@@ -115,6 +115,12 @@
             </ul>
           </li>
           
+          <li class="nav-item">
+                <a href="{{ url('departement') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Departement</p>
+                </a>
+              </li>
 
       </nav>
       <!-- /.sidebar-menu -->

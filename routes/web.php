@@ -55,13 +55,23 @@ Route::post('/problem/store', 'problemController@store')->name('problem.store');
 Route::put('/problem/{id}', 'problemController@update')->name('problem.update');
 Route::delete('/problem/{id}', 'problemController@destroy')->name('problem.destroy');
 
-// countermeasure
-Route::get('/countermeasure', 'countermeasureController@index')->name('countermeasure.home'); 
-Route::get('/countermeasure/add', 'countermeasureController@create')->name('countermeasure.form');
-Route::get('/countermeasure/{id}/edit', 'countermeasureController@edit');
-Route::post('/countermeasure/store', 'countermeasureController@store')->name('countermeasure.store');
-Route::put('/countermeasure/{id}', 'countermeasureController@update')->name('countermeasure.update');
-Route::delete('/countermeasure/{id}', 'countermeasureController@destroy')->name('countermeasure.destroy');
+
+// customer
+Route::get('/customer', 'customerController@index')->name('customer.home'); 
+Route::get('/customer/add', 'customerController@create')->name('customer.form');
+Route::get('/customer/{id}/edit', 'customerController@edit');
+Route::post('/customer/store', 'customerController@store')->name('customer.store');
+Route::put('/customer/{id}', 'customerController@update')->name('customer.update');
+Route::delete('/customer/{id}', 'customerController@destroy')->name('customer.destroy');
+
+
+// Suppliers
+Route::get('/suppliers', 'suppliersController@index')->name('suppliers.home'); 
+Route::get('/suppliers/add', 'suppliersController@create')->name('suppliers.form');
+Route::get('/suppliers/{id}/edit', 'suppliersController@edit');
+Route::post('/suppliers/store', 'suppliersController@store')->name('suppliers.store');
+Route::put('/suppliers/{id}', 'suppliersController@update')->name('suppliers.update');
+Route::delete('/suppliers/{id}', 'suppliersController@destroy')->name('suppliers.destroy');
  
  Route::resource('/grade', 'gradeController'); 
  Route::resource('/section', 'sectionController'); 
